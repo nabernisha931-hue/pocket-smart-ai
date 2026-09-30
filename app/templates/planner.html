@@ -1,0 +1,347 @@
+{% extends "base.html" %}
+
+{% block title %}
+{{ planner|capitalize }}
+Planner · PocketSmart AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="planner-layout">
+
+
+  <div class="form-card">
+
+    <p class="eyebrow">
+      {{ planner|upper }} PLANNER
+    </p>
+
+
+    <h1>
+
+      {% if planner == "home" %}
+
+        Home Interior Planner
+
+      {% elif planner == "party" %}
+
+        Party Budget Planner
+
+      {% else %}
+
+        Jewelry Budget Planner
+
+      {% endif %}
+
+    </h1>
+
+
+    <form
+      id="planner-form"
+      data-planner="{{ planner }}"
+      enctype="multipart/form-data"
+    >
+
+
+      <label>
+
+        Budget (₹)
+
+        <input
+          name="budget"
+          type="number"
+          min="1"
+          step="1"
+          required
+        >
+
+      </label>
+
+
+      {% if planner == "home" %}
+
+
+      <label>
+
+        Room
+
+        <input
+          name="room"
+          placeholder="Living Room"
+          required
+        >
+
+      </label>
+
+
+      <label>
+
+        Style
+
+        <select name="style">
+
+          <option>
+            Modern
+          </option>
+
+          <option>
+            Minimal
+          </option>
+
+          <option>
+            Traditional
+          </option>
+
+          <option>
+            Industrial
+          </option>
+
+        </select>
+
+      </label>
+
+
+      <label>
+
+        Occupants
+
+        <input
+          name="occupants"
+          type="number"
+          value="1"
+          min="1"
+        >
+
+      </label>
+
+
+      <label>
+
+        Items
+
+        <input
+          name="items"
+          placeholder="sofa, light, dining table"
+        >
+
+      </label>
+
+
+      <label>
+
+        Priorities
+
+        <input
+          name="priorities"
+          placeholder="comfort, storage"
+        >
+
+      </label>
+
+
+      {% elif planner == "party" %}
+
+
+      <label>
+
+        Event type
+
+        <input
+          name="event_type"
+          placeholder="Birthday"
+          required
+        >
+
+      </label>
+
+
+      <label>
+
+        Guests
+
+        <input
+          name="guests"
+          type="number"
+          min="1"
+          required
+        >
+
+      </label>
+
+
+      <label>
+
+        Venue preference
+
+        <input
+          name="venue"
+          placeholder="Indoor / Outdoor / Flexible"
+          value="Flexible"
+        >
+
+      </label>
+
+
+      <label>
+
+        Food preference
+
+        <input
+          name="food_preference"
+          value="Mixed"
+        >
+
+      </label>
+
+
+      <label>
+
+        City
+
+        <input
+          name="city"
+          value="India"
+        >
+
+      </label>
+
+
+      {% else %}
+
+
+      <label>
+
+        Occasion
+
+        <input
+          name="occasion"
+          placeholder="Wedding / Festival / Party"
+          required
+        >
+
+      </label>
+
+
+      <label>
+
+        Style
+
+        <select name="style">
+
+          <option>
+            Minimal
+          </option>
+
+          <option>
+            Traditional
+          </option>
+
+          <option>
+            Elegant
+          </option>
+
+          <option>
+            Statement
+          </option>
+
+        </select>
+
+      </label>
+
+
+      <label>
+
+        Metal preference
+
+        <input
+          name="metal"
+          value="Any"
+        >
+
+      </label>
+
+
+      <label>
+
+        Outfit notes
+
+        <textarea
+          name="outfit_notes"
+          placeholder="Color, neckline, style, etc."
+        ></textarea>
+
+      </label>
+
+
+      <label>
+
+        Optional outfit image
+
+        <input
+          name="outfit_image"
+          type="file"
+          accept="image/*"
+        >
+
+      </label>
+
+
+      {% endif %}
+
+
+      <button
+        class="button primary"
+        type="submit"
+      >
+
+        Generate Recommendations
+
+      </button>
+
+
+      <p
+        id="form-message"
+        class="message"
+      ></p>
+
+    </form>
+
+  </div>
+
+
+  <div>
+
+    <div
+      id="result"
+      class="result-panel empty"
+    >
+
+      <div class="empty-state">
+
+        <div class="icon">
+          ✨
+        </div>
+
+        <h2>
+          Your AI plan
+          will appear here
+        </h2>
+
+        <p>
+          Submit the form to
+          generate a budget
+          allocation and
+          recommendation cards.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+</section>
+
+{% endblock %}

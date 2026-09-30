@@ -1,0 +1,354 @@
+<!doctype html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1"
+  >
+
+  <meta
+    name="theme-color"
+    content="#07152f"
+  >
+
+  <title>
+    {% block title %}
+    PocketSmart AI
+    {% endblock %}
+  </title>
+
+
+  <!-- Anime-style fonts -->
+
+  <link
+    rel="preconnect"
+    href="https://fonts.googleapis.com"
+  >
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400;500;600;700;800&family=Orbitron:wght@600;700;800&display=swap"
+    rel="stylesheet"
+  >
+
+
+  <!-- Main CSS -->
+
+  <link
+    rel="stylesheet"
+    href="/static/css/style.css"
+  >
+
+</head>
+
+
+<body>
+
+
+  <!-- =================================
+       ANIME ENERGY BACKGROUND
+       ================================= -->
+
+  <div class="anime-background">
+
+    <div class="energy-orb orb-one"></div>
+
+    <div class="energy-orb orb-two"></div>
+
+    <div class="energy-orb orb-three"></div>
+
+    <div class="energy-grid"></div>
+
+  </div>
+
+
+  <!-- =================================
+       NAVBAR
+       ================================= -->
+
+  <header class="nav">
+
+    <div class="nav-inner">
+
+
+      <!-- LOGO -->
+
+      <a
+        class="brand"
+        href="/"
+      >
+
+        <span class="brand-icon">
+          ⚡
+        </span>
+
+        <span class="brand-name">
+          PocketSmart
+        </span>
+
+        <span class="brand-ai">
+          AI
+        </span>
+
+      </a>
+
+
+      <!-- MOBILE MENU -->
+
+      <button
+        class="mobile-menu"
+        id="mobileMenu"
+        type="button"
+        aria-label="Open navigation"
+        aria-expanded="false"
+      >
+
+        <span></span>
+        <span></span>
+        <span></span>
+
+      </button>
+
+
+      <!-- NAVIGATION -->
+
+      <nav
+        class="nav-links"
+        id="navLinks"
+      >
+
+        <a
+          href="/"
+          class="nav-link"
+        >
+          <span>⌂</span>
+          Home
+        </a>
+
+
+        <a
+          href="/dashboard"
+          class="nav-link"
+        >
+          <span>⚡</span>
+          Dashboard
+        </a>
+
+
+        <a
+          href="/history"
+          class="nav-link"
+        >
+          <span>📜</span>
+          History
+        </a>
+
+
+        <a
+          href="/login"
+          class="nav-link"
+        >
+          <span>🔐</span>
+          Login
+        </a>
+
+
+        <a
+          class="nav-cta"
+          href="/register"
+        >
+
+          <span>
+            START JOURNEY
+          </span>
+
+          <span class="nav-arrow">
+            →
+          </span>
+
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =================================
+       MAIN CONTENT
+       ================================= -->
+
+  <main class="main-content">
+
+    <div class="page-container">
+
+      {% block content %}
+
+      {% endblock %}
+
+    </div>
+
+  </main>
+
+
+  <!-- =================================
+       FOOTER
+       ================================= -->
+
+  <footer class="site-footer">
+
+    <div class="footer-energy"></div>
+
+
+    <div class="footer-content">
+
+
+      <div class="footer-brand">
+
+        <span class="footer-icon">
+          ⚡
+        </span>
+
+        <span>
+          PocketSmart
+        </span>
+
+        <strong>
+          AI
+        </strong>
+
+      </div>
+
+
+      <p>
+        Your money.
+        Your mission.
+        Your next level.
+      </p>
+
+
+      <small>
+        © 2026 PocketSmart AI ·
+        Budget-aware planning with generative AI.
+      </small>
+
+    </div>
+
+  </footer>
+
+
+  <!-- =================================
+       JAVASCRIPT
+       ================================= -->
+
+  <script src="/static/js/app.js"></script>
+
+
+  {% block scripts %}
+
+  {% endblock %}
+
+
+  <!-- =================================
+       MOBILE NAVIGATION
+       ================================= -->
+
+  <script>
+
+    document.addEventListener(
+      "DOMContentLoaded",
+      function () {
+
+        const menuButton =
+          document.getElementById(
+            "mobileMenu"
+          );
+
+        const navLinks =
+          document.getElementById(
+            "navLinks"
+          );
+
+
+        if (
+          !menuButton ||
+          !navLinks
+        ) {
+          return;
+        }
+
+
+        menuButton.addEventListener(
+          "click",
+          function () {
+
+            const isOpen =
+              navLinks.classList.toggle(
+                "mobile-open"
+              );
+
+
+            menuButton.classList.toggle(
+              "active"
+            );
+
+
+            menuButton.setAttribute(
+              "aria-expanded",
+              String(isOpen)
+            );
+
+          }
+        );
+
+
+        /* Close mobile menu */
+
+        navLinks
+          .querySelectorAll("a")
+          .forEach(
+            function (link) {
+
+              link.addEventListener(
+                "click",
+                function () {
+
+                  navLinks.classList.remove(
+                    "mobile-open"
+                  );
+
+                  menuButton.classList.remove(
+                    "active"
+                  );
+
+                  menuButton.setAttribute(
+                    "aria-expanded",
+                    "false"
+                  );
+
+                }
+              );
+
+            }
+          );
+
+      }
+    );
+
+  </script>
+
+
+</body>
+
+</html>

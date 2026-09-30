@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block title %}
+Dashboard · PocketSmart AI
+{% endblock %}
+
+
+{% block content %}
+
+<section class="section dashboard-head">
+
+  <div>
+
+    <p class="eyebrow">
+      YOUR WORKSPACE
+    </p>
+
+    <h1 id="welcome">
+      Dashboard
+    </h1>
+
+    <p>
+      Choose a planner and let
+      PocketSmart build a
+      budget-aware starting point.
+    </p>
+
+  </div>
+
+
+  <button
+    id="logout-btn"
+    class="button ghost"
+  >
+    Logout
+  </button>
+
+</section>
+
+
+<section class="section grid-3">
+
+  <a
+    class="card planner-card"
+    href="/planner/home"
+  >
+
+    <div class="icon">
+      🏠
+    </div>
+
+    <h3>
+      Home
+    </h3>
+
+    <p>
+      Interior planning
+    </p>
+
+  </a>
+
+
+  <a
+    class="card planner-card"
+    href="/planner/party"
+  >
+
+    <div class="icon">
+      🎉
+    </div>
+
+    <h3>
+      Party
+    </h3>
+
+    <p>
+      Event budgeting
+    </p>
+
+  </a>
+
+
+  <a
+    class="card planner-card"
+    href="/planner/jewelry"
+  >
+
+    <div class="icon">
+      💎
+    </div>
+
+    <h3>
+      Jewelry
+    </h3>
+
+    <p>
+      Occasion matching
+    </p>
+
+  </a>
+
+</section>
+
+
+<section class="section">
+
+  <div class="section-title">
+
+    <h2>
+      Recent plans
+    </h2>
+
+    <a href="/history">
+      View all
+    </a>
+
+  </div>
+
+
+  <div
+    id="recent-history"
+    class="results-grid"
+  >
+
+    <p>
+      Loading…
+    </p>
+
+  </div>
+
+</section>
+
+{% endblock %}
